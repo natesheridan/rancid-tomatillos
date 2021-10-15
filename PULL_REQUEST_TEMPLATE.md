@@ -1,8 +1,8 @@
-## [PR for What's Cookin 🍳]
+## [Rancid Tomatillos 🍅]
 
-[ ] - Feature PR
-[ ] - Refactor PR
-[ ] - Other PR
+- [ ] - Feature PR
+- [ ] - Refactor PR
+- [ ] - Other PR
 
 
 **What (if any) features are you implementing?**
