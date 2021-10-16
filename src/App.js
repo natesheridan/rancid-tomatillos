@@ -22,7 +22,8 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Main movies={movieData.movies}/>
+      <Main movies={movieData.movies} />
+      <SingleMovieScreen movies={movieData.movies} />
     </div>
   );
 }
