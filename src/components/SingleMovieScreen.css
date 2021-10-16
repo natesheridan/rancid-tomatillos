@@ -1,7 +1,16 @@
 .single-movie-view {
   width: 100%;
+  display: grid;
+  grid-template-columns: 33% 77%;
+  grid-template-rows: 25% 25% 25% 25%;
 }
 
 .cover-poster {
-  width: 30%;
+  grid-column: 1;
+  grid-row: span 4;
+}
+
+.movie-details {
+  grid-column: 2;
+  grid-row: 2 / span 2;
 }

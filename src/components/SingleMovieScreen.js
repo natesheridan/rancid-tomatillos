@@ -10,23 +10,22 @@ export class SingleMovieScreen extends React.Component {
   }
 
   renderSinglePageView() {
-    let classes = `single-movie-card fade-in animation-duration:100ms`;
-
     return(
-      <article className={classes}
-        //Attempting to set a the backdrop_path to the background of the article
+      <article className="single-movie-view"
+        //dynamically add backdrop_path as the background to the article
         style={{
-          backgroundImage: 'url('movie.backdrop_path')',
-          backgroundSize: "cover",
-          width: "100%"
+          backgroundImage: `url(${movie.backdrop_path})`,
+          backgroundSize: "cover"
         }}
         /*onClick={backToMain}*/>
 
+        //display the cover poster
         <article className="cover-poster">
           <img src={movie.poster_path} />
         </article>
 
-        <article>
+        //display movie details
+        <article className="movie-details">
           <p>{movie.title}</p>
           <p>{movie.release_date}</p>
           <p>{movie.average_rating}</p>
