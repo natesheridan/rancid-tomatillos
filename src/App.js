@@ -1,23 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+// import api from './api';
+import movieData from './movieData';
+import Header from './components/Header.js'
+import Main from './components/Main.js'
+
+// movieData = {
+// "movies": [
+//   {
+//     "id": 694919,
+//     "poster_path": "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
+//     "backdrop_path": "https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg",
+//     "title": "Money Plane",
+//     "average_rating": 6.666666666666667,
+//     "release_date": "2020-09-29"
+//   },...
+// }
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Main movies={movieData.movies}/>
     </div>
   );
 }
