@@ -10,7 +10,7 @@
 
 .cover-poster {
   position: relative;
-  grid-column: 1;
+  grid-column: 1 / 1;
   grid-row: span 3;
   height: 100%;
   width: 100%;
@@ -18,13 +18,14 @@
 .cover-poster img {
   position: absolute;
   left: 10%;
-  height: 100%;
+  top: 3%;
+  height: 90%;
   width: auto;
   box-shadow: 1px 0px 15px 5px #000000;
 }
 
 .movie-details {
-  background-color:rgba(41, 41, 41, 0.481);
+  background-color:rgba(41, 41, 41, 0.824);
   box-shadow: 1px 0px 15px 2px #000000;
   height: 100%;
   width: 100%;
