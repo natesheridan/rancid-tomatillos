@@ -23,9 +23,9 @@ function App() {
     <div className="App">
       <Header />
       <Main movies={movieData.movies} />
-      <SingleMovieScreen movies={movieData.movies} />
+      //<Footer />
     </div>
-  );
+  )
 }
 
 export default App;

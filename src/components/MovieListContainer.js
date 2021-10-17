@@ -11,7 +11,8 @@ class MovieListContainer extends Component {
     let movieCardElementArr = this.state.movies.map((movie, i) => {
       let classes = `movie-card fade-in animation-duration:${i}00ms`;
       return (
-        <article className={classes} id={movie.id} onClick={renderSinglePageView}>
+        //I am not sure if this is what needs to happen here?  Data down, actions up?  
+        <article className={classes} id={movie.id} onClick={ () = setMovieDetails(movie.id) }>
           <img src={movie.poster_path}></img>
           <p>{movie.title}</p>
         </article>
