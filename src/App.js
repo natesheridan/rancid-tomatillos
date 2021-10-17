@@ -23,7 +23,6 @@ function App() {
     <div className="App">
       <Header />
       <Main movies={movieData.movies} />
-      //<Footer />
     </div>
   )
 }
