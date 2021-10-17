@@ -1,22 +1,28 @@
 import React, { Component } from 'react'
-import './MovieListContainer.css';
+import '../css/MovieListContainer.css';
+import MovieCard from './MovieCard';
 
 class MovieListContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {movies: this.props.movies}
+    this.state = {
+      movies: this.props.movies
+    }
   }
 
   returnCardElements() {
     let movieCardElementArr = this.state.movies.map((movie, i) => {
       let classes = `movie-card fade-in animation-duration:${i}00ms`;
-      return (
-        //I am not sure if this is what needs to happen here?  Data down, actions up?  
-        <article className={classes} id={movie.id} onClick={ () = setMovieDetails(movie.id) }>
-          <img src={movie.poster_path}></img>
-          <p>{movie.title}</p>
-        </article>
-      )
+      <MovieCard
+        classes={classes}
+        title={movie.title}
+        id={movie.id}
+        poster={movie.poster_path}
+        background={movie.backdrop_path}
+        title={movie.title}
+        release={movie.release_date}
+        rating={movie.average_rating}
+      />
     });
     return movieCardElementArr;
   }

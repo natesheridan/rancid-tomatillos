@@ -1,5 +1,5 @@
 import React from 'react';
-import './Main.css';
+import '../css/Main.css';
 
 import MovieListContainer from './MovieListContainer';
 import SingleMovieScreen from './SingleMovieScreen';
@@ -13,29 +13,22 @@ class Main extends React.Component {
     }
   }
 
-  //where the hell do I put this shit?
-  // id: movie.id,
-  // poster: movie.poster_path,
-  // backdrop: movie.backdrop_path,
-  // title: movie.title,
-  // rating: movie.average_rating,
-  // release: movie.release_date
-
   componentDidMount = () => {
     //eventually this is where we want to fetch
-    this.setState({ movies: movieData.movies });
+    this.setState({ movies: this.state.movies });
   }
 
   setMovieDetails = (id) => {
-    const selectedMovie = movieData.movies.find(movie => movie.id === id);
+    const selectedMovie = this.state.movies.find(movie => movie.id === id);
     this.setState({ selectedMovie: selectedMovie });
   }
 
   render() {
     let main;
 
-    selectedMovie.length ?
-    main = <SingleMovieScreen movie={this.state.selectedMovie} /> :
+    //conditional rendering for whether or not there is a movie selected
+    this.selectedMovie.length ?
+    main = <SingleMovieScreen movie={this.state.selectedMovie} setMovieDetails={this.state.id}/> :
     main = <MovieListContainer movies={this.state.movies} />;
 
     return (
