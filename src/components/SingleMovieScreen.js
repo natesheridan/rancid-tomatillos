@@ -2,42 +2,26 @@ import React from 'react';
 import '../css/SingleMovieScreen.css';
 
 const SingleMovieScreen = (movie) => {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {props};
-  // }
+  console.log(movie)
+  return(
+    <article className="single-movie-view"
+      style={{
+        backgroundImage: `url(${movie.movie.backdrop_path})`,
+        backgroundSize: "cover"
+      }}
+      /*onClick={backToMain}*/>
 
-    return(
-      <article className="single-movie-view"
-        //dynamically add background image to the article
-        style={{
-          backgroundImage: `url(${this.state.background})`,
-          backgroundSize: "cover"
-        }}
-        /*onClick={backToMain}*/>
-
-        //display the cover poster
-        <article className="cover-poster">
-          <img src={this.state.poster} />
-        </article>
-
-        //display movie details
-        <article className="movie-details">
-          <p>{this.state.title}</p>
-          <p>{this.state.release}</p>
-          <p>{this.state.rating.toFix(2)}</p>
-        </article>
+      <article className="cover-poster">
+        <img src={movie.movie.poster_path} alt={movie.movie.title} />
       </article>
-    )
-  }
 
-  // render() {
-  //   return(
-  //     <section className="single-movie-view">
-  //       {this.renderSinglePageView()}
-  //     </section>
-  //   )
-  // }
-//}
+      <article className="movie-details">
+        <p>{movie.movie.title}</p>
+        <p>{movie.movie.release_date}</p>
+        <p>{movie.movie.average_rating}</p>
+      </article>
+    </article>
+  )
+}
 
 export default SingleMovieScreen;

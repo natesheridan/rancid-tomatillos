@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../css/MovieCard.css';
 
-const MovieCard = ({ classes, id, poster, background, title, release, rating }) => {
+const MovieCard = ({ classes, id, poster, background, title, release, rating, setMovieDetails }) => {
   return (
-    <article className={classes} id={id} onClick={ () => SingleMovieScreen(movie) }>
-      <img src={poster}></img>
+    <article className={classes} id={id} onClick={ () => setMovieDetails(id) } >
+      <img src={poster} alt={title}></img>
       <p>{title}</p>
     </article>
   )

@@ -13,10 +13,10 @@ class Main extends React.Component {
     }
   }
 
-  componentDidMount = () => {
-    //eventually this is where we want to fetch
-    this.setState({ movies: this.state.movies });
-  }
+  // componentDidMount = () => {
+  //   //eventually this is where we want to fetch
+  //   this.setState({ movies: this.state.movies });
+  // }
 
   setMovieDetails = (id) => {
     const selectedMovie = this.state.movies.find(movie => movie.id === id);
@@ -27,9 +27,9 @@ class Main extends React.Component {
     let main;
 
     //conditional rendering for whether or not there is a movie selected
-    this.selectedMovie.length ?
-    main = <SingleMovieScreen movie={this.state.selectedMovie} setMovieDetails={this.state.id}/> :
-    main = <MovieListContainer movies={this.state.movies} />;
+    this.state.selectedMovie ?
+    main = <SingleMovieScreen movie={this.state.selectedMovie} /> :
+    main = <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails} />;
 
     return (
       <div className="main">
