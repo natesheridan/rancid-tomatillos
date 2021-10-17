@@ -1,11 +1,27 @@
 import React from 'react';
-import './SingleMovieScreen.css';
+import '../css/SingleMovieScreen.css';
 
-class SingleMovieScreen extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            
-        }
-    }
+const SingleMovieScreen = (movie) => {
+  console.log(movie)
+  return(
+    <article className="single-movie-view"
+      style={{
+        backgroundImage: `url(${movie.movie.backdrop_path})`,
+        backgroundSize: "cover"
+      }}
+      /*onClick={backToMain}*/>
+
+      <article className="cover-poster">
+        <img src={movie.movie.poster_path} alt={movie.movie.title} />
+      </article>
+
+      <article className="movie-details">
+        <p>{movie.movie.title}</p>
+        <p>{movie.movie.release_date}</p>
+        <p>{movie.movie.average_rating}</p>
+      </article>
+    </article>
+  )
 }
+
+export default SingleMovieScreen;

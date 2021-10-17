@@ -22,9 +22,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Main movies={movieData.movies}/>
+      <Main movies={movieData.movies} />
+      //<Footer />
     </div>
-  );
+  )
 }
 
 export default App;

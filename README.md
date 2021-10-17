@@ -6,21 +6,21 @@
 
 ## Authors
 
-- [@](https://www.github.com/user)
-- [@](https://www.github.com/user)
+- [Nate Sheridan](https://www.github.com/natesheridan)
+- [Elise Beall](https://www.github.com/elisebeall)
 
-  
+
 ## Technology Used
  - [link](link)
  - [link](link)
  - [link](link)
 
-  
+
 ## Demo
 
 Insert gif or link to demo
 
-  
+
 ## Installation
 
 Install my-project with npm
@@ -29,7 +29,7 @@ Install my-project with npm
   npm install my-project
   cd my-project
 ```
-    
+
 ## Deployment
 
 To deploy this project run
