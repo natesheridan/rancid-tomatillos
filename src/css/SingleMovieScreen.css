@@ -1,16 +1,49 @@
 .single-movie-view {
+  position: absolute;
   width: 100%;
+  height: 100%;
   display: grid;
-  grid-template-columns: 33% 77%;
-  grid-template-rows: 25% 25% 25% 25%;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 33% 33% 33%;
+  background-size: cover;
 }
 
 .cover-poster {
+  position: relative;
   grid-column: 1;
-  grid-row: span 4;
+  grid-row: span 3;
+  height: 100%;
+  width: 100%;
+}
+.cover-poster img {
+  position: absolute;
+  left: 10%;
+  height: 100%;
+  width: auto;
+  box-shadow: 1px 0px 15px 5px #000000;
 }
 
 .movie-details {
-  grid-column: 2;
-  grid-row: 2 / 2;
+  background-color:rgba(41, 41, 41, 0.481);
+  box-shadow: 1px 0px 15px 2px #000000;
+  height: 100%;
+  width: 100%;
+  grid-column-start: 2;
+  grid-column-end: span 2;
+  grid-row: 2;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: column;
 }
+.md-item{
+  margin: -10px;
+}
+.movie-details p {
+  color: white;
+}
+.md-title{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+

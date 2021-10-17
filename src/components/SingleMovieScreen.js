@@ -7,19 +7,27 @@ const SingleMovieScreen = (movie) => {
     <article className="single-movie-view"
       style={{
         backgroundImage: `url(${movie.movie.backdrop_path})`,
-        backgroundSize: "cover"
       }}
       /*onClick={backToMain}*/>
 
-      <article className="cover-poster">
+      <div className="cover-poster">
         <img src={movie.movie.poster_path} alt={movie.movie.title} />
-      </article>
+      </div>
 
-      <article className="movie-details">
-        <p>{movie.movie.title}</p>
-        <p>{movie.movie.release_date}</p>
-        <p>{movie.movie.average_rating}</p>
-      </article>
+      <div className="movie-details">
+        <section className="md-item">
+          <p className="md-title">{movie.movie.title}</p>
+        </section>
+        <section className="md-item">
+          <p className="md-release-date">{movie.movie.release_date}</p>
+        </section>  
+        <section className="md-item">
+          <p className="md-average-rating">{movie.movie.average_rating}</p>
+        </section>
+        <section className="md-item">
+          <p className="md-overview">{movie.movie.overview}</p>
+        </section>
+      </div>
     </article>
   )
 }
