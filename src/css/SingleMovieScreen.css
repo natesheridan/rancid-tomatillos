@@ -7,9 +7,47 @@
   grid-template-rows: 33% 33% 33%;
   background-size: cover;
 }
+.single-movie-back-btn{
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 2;
+  margin-top: 10px;
+  height: 5em;
+  width: 5em;
+  margin-left: 20px;
+	box-shadow: 3px 4px 0px 0px #8a2a21;
+	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+	background-color:#c62d1f;
+	border-radius:18px;
+	border:1px solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #810e05;
+}
+.single-movie-back-btn:hover {
+	background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+	background-color:#f24437;
+}
+.single-movie-back-btn:active {
+	position:relative;
+	top:1px;
+}
+.single-movie-back-btn img{
+  position: relative;
+  height: 100%;
+  right: 20px;
+  width: auto;
+  z-index: 1;
+}
 
 .cover-poster {
-  position: relative;
+  position: absolute;
+  z-index: 1;
   grid-column: 1 / 1;
   grid-row: span 3;
   height: 100%;

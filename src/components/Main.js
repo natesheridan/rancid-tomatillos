@@ -27,13 +27,16 @@ class Main extends Component {
     const selectedMovie = this.state.movies.find(movie => movie.id === id);
     this.setState({ selectedMovie: selectedMovie });
   }
+  goBack = () => {
+    this.setState({ selectedMovie: ''})
+  }
 
   render() {
     let main;
 
     //conditional rendering for whether or not there is a movie selected
     this.state.selectedMovie ?
-    main = <SingleMovieScreen movie={this.state.selectedMovie} /> :
+    main = <SingleMovieScreen movie={this.state.selectedMovie} goBack={this.goBack}/> :
     main = <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails} />;
 
     return (
