@@ -10,7 +10,7 @@ class Header extends Component {
 
     render(){
         return (
-            <section className="header">
+            <section className="row header">
                 <Navbar />
                 {/* <UserBubble /> */}
             </section>

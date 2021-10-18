@@ -37,7 +37,7 @@ class Main extends Component {
     main = <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails} />;
 
     return (
-      <div className="main">
+      <div className="row main">
         {this.state.error && <h2>{this.state.error}</h2>}
         {main}
       </div>
