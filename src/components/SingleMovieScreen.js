@@ -8,8 +8,7 @@ const SingleMovieScreen = (movie) => {
       style={{
         backgroundImage: `url(${movie.movie.backdrop_path})`,
         backgroundSize: "cover"
-      }}
-      /*onClick={backToMain}*/>
+      }}>
 
       <article className="cover-poster">
         <img src={movie.movie.poster_path} alt={movie.movie.title} />

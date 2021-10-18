@@ -20,7 +20,6 @@ class Main extends React.Component {
       .then(response => response.json())
       .then(data => this.setState({ movies: data.movies }))
       .catch(error => this.setState({ error: error.message }))
-    //this.setState({ movies: this.state.movies });
   }
 
   setMovieDetails = (id) => {
@@ -30,7 +29,7 @@ class Main extends React.Component {
 
   render() {
     let main;
-    console.log('this.state.movies', this.state.movies)
+
     //conditional rendering for whether or not there is a movie selected
     this.state.selectedMovie ?
     main = <SingleMovieScreen movie={this.state.selectedMovie} /> :
