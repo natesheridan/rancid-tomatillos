@@ -13,6 +13,9 @@ const SingleMovieScreen = (movie) => {
       <div className="cover-poster">
         <img src={movie.movie.poster_path} alt={movie.movie.title} />
       </div>
+      <button className="single-movie-back-btn">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Back_Arrow.svg/1200px-Back_Arrow.svg.png"></img>
+      </button>
 
       <div className="movie-details">
         <section className="md-item">
