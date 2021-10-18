@@ -32,7 +32,7 @@ class Main extends React.Component {
     main = <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails} />;
 
     return (
-      <div className="main">
+      <div className="row main">
         {main}
       </div>
     )
