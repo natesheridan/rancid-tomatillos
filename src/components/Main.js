@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../css/Main.css';
 
 import { endpoints } from '../App';
 import MovieListContainer from './MovieListContainer';
 import SingleMovieScreen from './SingleMovieScreen';
 
-class Main extends React.Component {
+class Main extends Component {
   constructor() {
     super();
     this.state = {
@@ -16,11 +16,11 @@ class Main extends React.Component {
   }
 
   componentDidMount = () => {
+    console.log(endpoints.movies)
     fetch(endpoints.movies)
       .then(response => response.json())
       .then(data => this.setState({ movies: data.movies }))
       .catch(error => this.setState({ error: error.message }))
-    //this.setState({ movies: this.state.movies });
   }
 
   setMovieDetails = (id) => {
@@ -30,7 +30,7 @@ class Main extends React.Component {
 
   render() {
     let main;
-    console.log('this.state.movies', this.state.movies)
+
     //conditional rendering for whether or not there is a movie selected
     this.state.selectedMovie ?
     main = <SingleMovieScreen movie={this.state.selectedMovie} /> :
@@ -38,6 +38,7 @@ class Main extends React.Component {
 
     return (
       <div className="row main">
+        {this.state.error && <h2>{this.state.error}</h2>}
         {main}
       </div>
     )
