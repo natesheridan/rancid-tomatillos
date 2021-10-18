@@ -6,9 +6,9 @@ const SingleMovieScreen = (movie) => {
   return(
     <article className="single-movie-view"
       style={{
-        backgroundImage: `url(${movie.movie.backdrop_path})`,
-      }}
-      /*onClick={backToMain}*/>
+        backgroundImage: `url(${movie.movie.backdrop_path})`
+      }}>
+
 
       <div className="cover-poster">
         <img src={movie.movie.poster_path} alt={movie.movie.title} />

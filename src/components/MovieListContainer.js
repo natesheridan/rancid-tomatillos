@@ -12,6 +12,7 @@ class MovieListContainer extends Component {
   }
 
   returnCardElements() {
+    //console.log(this.state.movies);
     let movieCardElementArr = this.state.movies.map((movie, i) => {
       let classes = `movie-card fade-in animation-duration:${i}00ms`;
       return <MovieCard

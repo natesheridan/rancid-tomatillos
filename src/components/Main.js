@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../css/Main.css';
 
+import { endpoints } from '../App';
 import MovieListContainer from './MovieListContainer';
 import SingleMovieScreen from './SingleMovieScreen';
 
-class Main extends React.Component {
-  constructor(props) {
-    super(props);
+class Main extends Component {
+  constructor() {
+    super();
     this.state = {
-      movies: props.movies,
+      movies: [],
+      error: '',
       selectedMovie: ''
     }
   }
 
-  // componentDidMount = () => {
-  //   //eventually this is where we want to fetch
-  //   this.setState({ movies: this.state.movies });
-  // }
+  componentDidMount = () => {
+    console.log(endpoints.movies)
+    fetch(endpoints.movies)
+      .then(response => response.json())
+      .then(data => this.setState({ movies: data.movies }))
+      .catch(error => this.setState({ error: error.message }))
+  }
 
   setMovieDetails = (id) => {
     const selectedMovie = this.state.movies.find(movie => movie.id === id);
@@ -33,6 +38,7 @@ class Main extends React.Component {
 
     return (
       <div className="row main">
+        {this.state.error && <h2>{this.state.error}</h2>}
         {main}
       </div>
     )
