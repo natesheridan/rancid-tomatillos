@@ -12,10 +12,9 @@ class MovieListContainer extends Component {
   }
 
   returnCardElements() {
-    //console.log(this.state.movies);
-    let movieCardElementArr = this.state.movies.map((movie, i) => {
-      let classes = `movie-card fade-in animation-duration:${i}00ms`;
-      return <MovieCard
+      let movieCardElementArr = this.state.movies.map((movie, i) => {
+        let classes = `movie-card fade-in animation-duration:${i}00ms`;
+        return (<MovieCard
         key={movie.id}
         classes={classes}
         id={movie.id}
@@ -25,7 +24,7 @@ class MovieListContainer extends Component {
         release={movie.release_date}
         rating={movie.average_rating}
         setMovieDetails={this.state.setMovieDetails}
-      />
+      />)
     });
     return movieCardElementArr;
   }
