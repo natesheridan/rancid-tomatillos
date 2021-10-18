@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../css/Main.css';
 
 import { endpoints } from '../App';
 import MovieListContainer from './MovieListContainer';
 import SingleMovieScreen from './SingleMovieScreen';
 
-class Main extends React.Component {
+class Main extends Component {
   constructor() {
     super();
     this.state = {
@@ -16,6 +16,7 @@ class Main extends React.Component {
   }
 
   componentDidMount = () => {
+    console.log(endpoints.movies)
     fetch(endpoints.movies)
       .then(response => response.json())
       .then(data => this.setState({ movies: data.movies }))
@@ -37,6 +38,7 @@ class Main extends React.Component {
 
     return (
       <div className="main">
+        {this.state.error && <h2>{this.state.error}</h2>}
         {main}
       </div>
     )
