@@ -1,33 +1,35 @@
 import React from 'react';
 import '../css/SingleMovieScreen.css';
 
-const SingleMovieScreen = (props) => {
+const SingleMovieScreen = ({goBack, movie}) => {
+  const {backdrop_path, title, poster_path, release_date, average_rating, overview} = movie;
+  
   return(
     <article className="single-movie-view"
       style={{
-        backgroundImage: `url(${props.movie.backdrop_path})`
+        backgroundImage: `url(${backdrop_path})`
       }}>
 
 
       <div className="cover-poster">
-        <img src={props.movie.poster_path} alt={props.movie.title} />
+        <img src={poster_path} alt={title} />
       </div>
-      <button onClick={() => props.goBack()} className="single-movie-back-btn">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Back_Arrow.svg/1200px-Back_Arrow.svg.png"></img>
+      <button onClick={goBack} className="single-movie-back-btn">
+        <img alt="alt" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Back_Arrow.svg/1200px-Back_Arrow.svg.png"></img>
       </button>
 
       <div className="movie-details">
         <section className="md-item">
-          <p className="md-title">{props.movie.title}</p>
+          <p className="md-title">{title}</p>
         </section>
         <section className="md-item">
-          <p className="md-release-date">{props.movie.release_date}</p>
+          <p className="md-release-date">{release_date}</p>
         </section>  
         <section className="md-item">
-          <p className="md-average-rating">{props.movie.average_rating}</p>
+          <p className="md-average-rating">{average_rating}</p>
         </section>
         <section className="md-item">
-          <p className="md-overview">{props.movie.overview}</p>
+          <p className="md-overview">{overview}</p>
         </section>
       </div>
     </article>

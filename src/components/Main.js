@@ -10,8 +10,8 @@ class Main extends Component {
     super();
     this.state = {
       movies: [],
-      error: '',
-      selectedMovie: ''
+      error: {},
+      selectedMovie: {},
     }
   }
 
@@ -20,7 +20,7 @@ class Main extends Component {
     fetch(endpoints.movies)
       .then(response => response.json())
       .then(data => this.setState({ movies: data.movies }))
-      .catch(error => this.setState({ error: error.message }))
+      .catch(error => this.setState({ error }))
   }
 
   setMovieDetails = (id) => {
@@ -28,20 +28,23 @@ class Main extends Component {
     this.setState({ selectedMovie: selectedMovie });
   }
   goBack = () => {
-    this.setState({ selectedMovie: ''})
+    this.setState({ selectedMovie: {}})
+    console.log(this.state.movies, "Movies after go back")
   }
 
   render() {
     let main;
 
     //conditional rendering for whether or not there is a movie selected
-    this.state.selectedMovie ?
+    this.state.selectedMovie?.id ?
     main = <SingleMovieScreen movie={this.state.selectedMovie} goBack={this.goBack}/> :
     main = <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails} />;
 
+    console.log(main, "main")
+
     return (
       <div className="row main">
-        {this.state.error && <h2>{this.state.error}</h2>}
+        {this.state.error?.message && <h2>{this.state.error.message}</h2>}
         {main}
       </div>
     )

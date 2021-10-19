@@ -4,7 +4,7 @@ import './App.css';
 // import movieData from './movieData';
 import Header from './components/Header.js'
 import Main from './components/Main.js'
-
+import reactDom from './react'
 // movieData = {
 // "movies": [
 //   {
@@ -21,15 +21,15 @@ export const endpoints = {
   movies: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies',
   /*
     {"movies":
-    [{
-      id: 1,
-      title: "Movie Title",
-      poster_path: "someURL",
-      backdrop_path: "someURL",
-      release_date: "2019-12-04",
-      overview: "Some overview",
-      average_rating: 6 }, ...
-    ]}
+      [{
+        id: 1,
+        title: "Movie Title",
+        poster_path: "someURL",
+        backdrop_path: "someURL",
+        release_date: "2019-12-04",
+        overview: "Some overview",
+        average_rating: 6 }, ...
+      ]}
   */
   movie: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/:movie_id',
   /*
