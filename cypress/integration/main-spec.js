@@ -24,9 +24,8 @@ describe('Rancid Tomatillos data load flows', () => {
         release_date: movie.release_date /*"2020-09-29"*/
       }
     })
-    .get(`img[alt=${movie.id}]`).should('contain', 'https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg');
-    .get('article[className="movie-card"]').should('contain', movie.poster_path)
-    .get('p').should('contain', 'Money Plane');
+    .get('img[src="https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg"]').should('be.visible')
+    .get('p').should('contain', 'Money Plane')
   });
 
   // it.skip('' => {
