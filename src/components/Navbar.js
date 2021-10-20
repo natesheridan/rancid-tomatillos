@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/Navbar.css';
+import {NavLink} from 'react-router-dom';
 
 class Navbar extends React.Component{
     constructor(props) {
@@ -10,9 +11,9 @@ class Navbar extends React.Component{
     render() {
         return (
             <nav className="navbar">
-                <button><a className="nav-btn">Test</a></button>
-                <button><a className="nav-btn">Test</a></button>
-                <button><a className="nav-btn">Test</a></button>
+                <NavLink to="/"><button><a className="nav-btn">Home</a></button></NavLink>
+                <NavLink to="/"><button><a className="nav-btn">Test</a></button></NavLink>
+                <NavLink to="/"><button><a className="nav-btn">Test</a></button></NavLink>
             </nav>
         )
     }
