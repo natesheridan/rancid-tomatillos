@@ -43,13 +43,12 @@ class Main extends Component {
           <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails}/>
         }/>
         <Route
-          exact path="/movie/:id"      
+          exact path="/:id"      
           render={({match}) => {
             const movieToRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id));   
             return <SingleMovieScreen movie = {movieToRender}/>
           }}
         />
-        <Route
       </div>
     )
   }
