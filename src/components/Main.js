@@ -4,6 +4,7 @@ import '../css/Main.css';
 import { endpoints } from '../App';
 import MovieListContainer from './MovieListContainer';
 import SingleMovieScreen from './SingleMovieScreen';
+import {Route} from 'react-router-dom';
 
 class Main extends Component {
   constructor() {
@@ -35,17 +36,20 @@ class Main extends Component {
   render() {
     let main;
 
-    //conditional rendering for whether or not there is a movie selected
-    this.state.selectedMovie?.id ?
-    main = <SingleMovieScreen movie={this.state.selectedMovie} goBack={this.goBack}/> :
-    main = <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails} />;
-
-    console.log(main, "main")
-
     return (
       <div className="row main">
         {this.state.error?.message && <h2>{this.state.error.message}</h2>}
-        {main}
+        <Route exact path="/" render={ () => 
+          <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails}/>
+        }/>
+        <Route
+          exact path="/movie/:id"      
+          render={({match}) => {
+            const movieToRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id));   
+            return <SingleMovieScreen movie = {movieToRender}/>
+          }}
+        />
+        <Route
       </div>
     )
   }
