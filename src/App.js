@@ -4,7 +4,10 @@ import './App.css';
 // import movieData from './movieData';
 import Header from './components/Header.js'
 import Main from './components/Main.js'
-import reactDom from './react'
+
+
+
+
 // movieData = {
 // "movies": [
 //   {
