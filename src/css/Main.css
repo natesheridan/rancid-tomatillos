@@ -2,3 +2,8 @@
     z-index: 0;
     background-color: #434343;
 }
+
+a {
+    color: rgb(72, 0, 0) !important;
+    text-decoration: none; /* no underline */
+  }
