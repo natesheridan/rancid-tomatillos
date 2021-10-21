@@ -4,7 +4,8 @@ describe('Rancid Tomatillos movie list container flows', () => {
   let movie;
 
   beforeEach(() => {
-    movie = movieData[0];
+    movie1 = movieData[0];
+    movie2 = movieData[1];
     cy.visit('http://localhost:3000')
   });
 
@@ -12,8 +13,8 @@ describe('Rancid Tomatillos movie list container flows', () => {
     cy.fixture('movieData.json').as('movieData');
   });
 
-  it('Should load two images and details about the movie', () => {
-    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/:694919', {
+  it('Should load all of the movie covers and titles', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
       statusCode: 201,
       body: {
         id: movie.id/*694919*/,
@@ -24,7 +25,10 @@ describe('Rancid Tomatillos movie list container flows', () => {
         release_date: movie.release_date /*"2020-09-29"*/
       }
     })
-    //.get('article[className="movie-card"]').should('contain', movie.poster_path)
+    .get('img[src="https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg"]').should('be.visible')
+    .get('img[src="https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg"]').should('be.visible')
+    .get('p').should('contain', 'Money Plane')
+    .get('p').should('contain', 'Mulan')
   });
 
   // it.skip('' => {
