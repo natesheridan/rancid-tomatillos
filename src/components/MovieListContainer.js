@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import '../css/MovieListContainer.css';
 import MovieCard from './MovieCard';
 
-class MovieListContainer extends Component {
+export default class MovieListContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,4 +37,4 @@ class MovieListContainer extends Component {
   }
 }
 
-export default MovieListContainer;
+// export default MovieListContainer;
