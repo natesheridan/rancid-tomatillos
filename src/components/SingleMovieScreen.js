@@ -19,7 +19,6 @@ const SingleMovieScreen = ({movieID}) => {
           const rawMovieData = data.movie;
           setMovieData(rawMovieData)
         })
-        .then(() => {console.log(movieData)})
         .catch(error => {
           console.alert("API Error: " + error);
           setAPIErrorHandler(error)
