@@ -40,14 +40,14 @@ class Main extends Component {
     return (
       <div className="row main">
         {this.state.error?.message && <h2>{this.state.error.message}</h2>}
-        <Route exact path="/" render={ () =>
+        <Route exact path={['/', '/home']} render={ () => 
           <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails}/>
         }/>
         <Route
           exact path="/:id"
           render={({match}) => {
-            const movieToRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id));
-            return <SingleMovieScreen movie = {movieToRender}/>
+            console.log(match.params.id)
+            return <SingleMovieScreen movieID = {match.params.id}/>
           }}
         />
       </div>
