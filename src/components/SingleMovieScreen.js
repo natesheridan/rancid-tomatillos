@@ -1,35 +1,57 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../css/SingleMovieScreen.css';
+import {endpoints} from '../App'
 
-const SingleMovieScreen = ({goBack, movie}) => {
-  const {backdrop_path, title, poster_path, release_date, average_rating, overview} = movie;
+const SingleMovieScreen = ({movieID}) => {
+
+  const [movieData, setMovieData] = React.useState(null);
+  const [apiErrorHandler, setAPIErrorHandler] = React.useState(null);
+  // const {backdrop_path, title, poster_path, release_date, average_rating, overview} = movie;
   
+  // setData((data) => {
+  //   movieData = data
+  // })
+  React.useEffect(() => {
+      fetch(`${endpoints.movies}/${movieID}`)
+        .then(response => response.json())
+        .then(data => {
+          const rawMovieData = data.movie;
+          setMovieData(rawMovieData)
+        })
+        .catch(error => {
+          console.alert("API Error: " + error);
+          setAPIErrorHandler(error)
+        })
+  }, [])
+      
+
+
+
   return(
     <article className="single-movie-view"
       style={{
-        backgroundImage: `url(${backdrop_path})`
+        backgroundImage: `url(${movieData?.backdrop_path})`
       }}>
-
-
       <div className="cover-poster">
-        <img src={poster_path} alt={title} />
+        <img src={movieData?.poster_path} alt={movieData?.title} />
       </div>
-      <button onClick={goBack} className="single-movie-back-btn">
+      <Link to="/" className="single-movie-back-btn">
         <img alt="alt" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Back_Arrow.svg/1200px-Back_Arrow.svg.png"></img>
-      </button>
+      </Link>
 
       <div className="movie-details">
         <section className="md-item">
-          <p className="md-title">{title}</p>
+          <p className="md-title">{movieData?.title}</p>
         </section>
-        <section className="md-item">
-          <p className="md-release-date">{release_date}</p>
+        <section className="md-item padding-top:-20 ">
+          <p className="md-release-date">{movieData?.release_date}</p>
         </section>  
         <section className="md-item">
-          <p className="md-average-rating">{average_rating}</p>
+          <p className="md-average-rating">{movieData?.average_rating}</p>
         </section>
         <section className="md-item">
-          <p className="md-overview">{overview}</p>
+          <p className="md-overview">{movieData?.overview}</p>
         </section>
       </div>
     </article>
