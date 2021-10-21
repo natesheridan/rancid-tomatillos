@@ -35,19 +35,17 @@ class Main extends Component {
   }
 
   render() {
-    let main;
-
     return (
       <div className="row main">
         {this.state.error?.message && <h2>{this.state.error.message}</h2>}
-        <Route exact path={['/', '/home']} render={ () => 
-          <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails}/>
+        <Route exact path={['/', '/home']} render={ () =>
+          <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails} />
         }/>
         <Route
-          exact path="/:id"
+          exact path="/movies/:id"
           render={({match}) => {
             console.log(match.params.id)
-            return <SingleMovieScreen movieID = {match.params.id}/>
+            return <SingleMovieScreen movieID={match.params.id}/>
           }}
         />
       </div>

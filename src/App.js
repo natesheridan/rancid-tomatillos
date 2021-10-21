@@ -33,7 +33,7 @@ export const endpoints = {
     "average_rating":6.142857142857143,
     "release_date":"2020-09-29"}
   */
-  movie: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/:movie_id',
+  movie: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movie_id}',
   /*
   {
     "movie": {

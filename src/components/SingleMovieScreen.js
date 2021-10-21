@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/SingleMovieScreen.css';
-import {endpoints} from '../App'
+import { endpoints } from '../App';
 
 const SingleMovieScreen = ({movieID}) => {
 
   const [movieData, setMovieData] = React.useState(null);
   const [apiErrorHandler, setAPIErrorHandler] = React.useState(null);
   // const {backdrop_path, title, poster_path, release_date, average_rating, overview} = movie;
-  
+
   // setData((data) => {
   //   movieData = data
   // })
@@ -24,15 +24,22 @@ const SingleMovieScreen = ({movieID}) => {
           setAPIErrorHandler(error)
         })
   }, [])
-      
 
+/*
+Could we possibly move this awesome react method (is it a hook?) to our
+'main' class component?  Then we can take advantage of state which I
+believe we'll need for error handling.
 
+ {this.state.error?.message && <h2>{this.state.error.message}</h2>}
+ {error?.message && <h2>{error.message}</h2>}
+*/
 
   return(
     <article className="single-movie-view"
       style={{
         backgroundImage: `url(${movieData?.backdrop_path})`
       }}>
+
       <div className="cover-poster">
         <img src={movieData?.poster_path} alt={movieData?.title} />
       </div>
@@ -46,7 +53,7 @@ const SingleMovieScreen = ({movieID}) => {
         </section>
         <section className="md-item padding-top:-20 ">
           <p className="md-release-date">{movieData?.release_date}</p>
-        </section>  
+        </section>
         <section className="md-item">
           <p className="md-average-rating">{movieData?.average_rating}</p>
         </section>
