@@ -7,7 +7,7 @@ const faStarIcon = <FontAwesomeIcon icon={faStar} />;
 
 const MovieCard = ({id, poster, title, release, rating}) => {
   return (
-    <Link to={"/movies/"+ id}>
+    <Link to={"/"+ id}>
     <article className="movie-card" id={id}>
       <img src={poster} alt={title}></img>
       <p>{title}</p>

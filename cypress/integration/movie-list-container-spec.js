@@ -11,7 +11,7 @@ describe('Rancid Tomatillos movie list container flows', () => {
   });
 
   it('Should confirm that test data is imported correctly', () => {
-    cy.fixture('movieData.json').as('movieData');
+    cy.fixture('movieData.json').as('movieData')
   });
 
   it('Should load all of the movie covers and titles', () => {
@@ -23,8 +23,9 @@ describe('Rancid Tomatillos movie list container flows', () => {
     })
       .get('img[src="https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg"]').should('be.visible')
       .get('img[src="https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg"]').should('be.visible')
+      .get('img[src="https://image.tmdb.org/t/p/original//uOw5JD8IlD546feZ6oxbIjvN66P.jpg"]').should('be.visible')
       .get('p').should('contain', 'Money Plane')
       .get('p').should('contain', 'Mulan')
+      .get('p').should('contain', 'Rogue')
   });
-
 });

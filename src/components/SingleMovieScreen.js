@@ -1,11 +1,11 @@
 import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import '../css/SingleMovieScreen.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { faFilm } from '@fortawesome/free-solid-svg-icons'
-import Trailer from './Trailer'
-import api from '../api'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faFilm } from '@fortawesome/free-solid-svg-icons';
+import Trailer from './Trailer';
+import { getAllMovies, getSingleMovie, getMoviesVideos } from '../api.js';
 
 const faStarIcon = <FontAwesomeIcon icon={faStar} />;
 const faFilmIcon = <FontAwesomeIcon icon={faFilm} />;
@@ -14,36 +14,33 @@ const SingleMovieScreen = ({movieID}) => {
 
   const [movieData, setMovieData] = React.useState(null);
   // const [errorData, setErrorData] = React.useState(null);
-  const [trailerIsShown, setTrailerIsShown] = React.useState(null)
+  const [trailerIsShown, setTrailerIsShown] = React.useState(null);
 
   React.useEffect(() => {
-    api.getSingleMovie(movieID)
+    getSingleMovie(movieID)
       .then(data => {
         let rawMovieData = dataHandler(data);
-        setMovieData(rawMovieData)
+        setMovieData(rawMovieData);
       })
   }, [])
 
-
   const toggleTrailerPopup = () => {
-    if (!trailerIsShown) {
-      setTrailerIsShown(true)
-    }
-    if (trailerIsShown) {
-      setTrailerIsShown(false)
-    }
-    return trailerIsShown
+    // if (!trailerIsShown) {
+    //   setTrailerIsShown(true)
+    // }
+    // if (trailerIsShown) {
+    //   setTrailerIsShown(false)
+    // }
+    trailerIsShown ? setTrailerIsShown(false) : setTrailerIsShown(true);
+    return trailerIsShown;
   }
 
   const dataHandler = (data) => {
-    let handledData = data
-    // if (data?.error){
-    //   return handledData
+    let handledData = data;
+    // if (data?.movie.backdrop_path.includes("NoPhotoAvailable")) {
+    //   handledData.backdrop_path = "https://images.unsplash.com/photo-1432847712612-926caafaa802?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80";
     // }
-    // if(data?.movie.backdrop_path.includes("NoPhotoAvailable")){
-    //   handledData.backdrop_path ="https://images.unsplash.com/photo-1432847712612-926caafaa802?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80"
-    // }
-    return handledData
+    return handledData;
   }
 
   return(
@@ -54,8 +51,8 @@ const SingleMovieScreen = ({movieID}) => {
         <div className="cover-poster">
           <img src={movieData?.poster_path} alt={movieData?.title} />
         </div>
-        <Link to="/" className="single-movie-btn">
-          <img alt="alt" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Back_Arrow.svg/1200px-Back_Arrow.svg.png"></img>
+        <Link to="/" classes="single-movie-btn">
+          <img alt={movieData?.title} src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Back_Arrow.svg/1200px-Back_Arrow.svg.png" />
         </Link>
         <div className="movie-details">
           <section className="md-item">
@@ -85,6 +82,7 @@ const SingleMovieScreen = ({movieID}) => {
         </div>
       </>
     </article>
-  )}
+  )
+}
 
 export default SingleMovieScreen;

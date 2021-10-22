@@ -10,7 +10,7 @@ export default class MovieListContainer extends Component {
       setMovieDetails: this.props.setMovieDetails
     }
   }
-  
+
   cardElements = () => {
     return this.props.movies.map((movie, i) => {
       return (
@@ -36,5 +36,3 @@ export default class MovieListContainer extends Component {
     )
   }
 }
-
-// export default MovieListContainer;

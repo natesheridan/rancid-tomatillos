@@ -1,4 +1,4 @@
-const endpoints = {
+export const endpoints = {
     movies: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies',
     /*
       {"movies":
@@ -34,26 +34,31 @@ const endpoints = {
     */
 };
 
-
-const api = {
-  getAllMovies: () => {
-    return fetch(`${endpoints.movies}`)
+export const getAllMovies = () => {
+  return fetch(endpoints.movies)
     .then(response => response.json())
-    // .then(data => errorHandler(data))
-    .then(data => data)
-  },
-  getSingleMovie: (movieID) => {
+    .catch(error => errorHandler(data))
+    //.then(data => data)
+};
+
+export const getSingleMovie = (movieID) => {
     return fetch(`${endpoints.movies}/${movieID}`)
-    .then(response => response.json())
-    // .then(data => errorHandler(data))
-    .then(data => data.movie)
-  },
-  getMoviesVideos: (movieID) => {
-    return fetch(`${endpoints.movies}/${movieID}/videos`)
-    .then(response => response.json())
-    // .then(data => errorHandler(data))
-    .then(data => data)
-  },
-}
+      .then(response => response.json())
+      .catch(error => errorHandler(data))
+      //.then(data => data.movie)
+  }
 
-export default api
+export const getMoviesVideos = (movieID) => {
+  return fetch(`${endpoints.movies}/${movieID}/videos`)
+    .then(response => response.json())
+    .catch(error => errorHandler(data))
+    //.then(data => data)
+};
+
+export const errorHandler = (data) => {
+  if (!response.ok) {
+    throw new Error (`It appears we/'ve encountered an error ${response.status}: ${response.status.text}. Please hit the back button & try again.`);
+  } else {
+    return response.json();
+  }
+};
