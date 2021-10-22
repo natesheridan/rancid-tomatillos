@@ -23,7 +23,7 @@ const SingleMovieScreen = ({movieID}) => {
         setMovieData(rawMovieData)
       })
   }, [])
-  
+
 
   const toggleTrailerPopup = () => {
     if (!trailerIsShown) {
@@ -32,7 +32,7 @@ const SingleMovieScreen = ({movieID}) => {
     if (trailerIsShown) {
       setTrailerIsShown(false)
     }
-    return trailerIsShown 
+    return trailerIsShown
   }
 
   const dataHandler = (data) => {
@@ -64,7 +64,7 @@ const SingleMovieScreen = ({movieID}) => {
           <section className="md-item">
             <p className="md-descriptor">released:</p>
             <p className="md-release-date">{movieData?.release_date}</p>
-          </section>  
+          </section>
           {movieData?.runtime && <section className="md-item">
             <p className="md-descriptor">runtime:</p>
             <p className="md-runtime">{(movieData?.runtime/60).toFixed()} hour and {(movieData?.runtime%60)} minutes</p>
