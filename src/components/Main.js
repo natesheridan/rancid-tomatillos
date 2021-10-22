@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import '../css/Main.css';
-
-import { endpoints } from '../App';
 import MovieListContainer from './MovieListContainer';
 import SingleMovieScreen from './SingleMovieScreen';
 import {Route} from 'react-router-dom';
+import api from '../api.js';
 
 class Main extends Component {
   constructor() {
@@ -17,11 +16,16 @@ class Main extends Component {
   }
 
   componentDidMount = () => {
-    console.log(endpoints.movies)
-    fetch(endpoints.movies)
-      .then(response => response.json())
-      .then(data => this.setState({ movies: data.movies }))
-      .catch(error => this.setState({ error }))
+    api.getAllMovies()
+    .then(data =>{
+      this.setState({ movies : data.movies });
+    })
+  }
+
+  MovieData() {
+    api.getAllMovies()
+    .then(data=>console.log(data))
+    .then((movies) => {this.setState({movies})})
   }
 
   setMovieDetails = (id) => {
@@ -44,8 +48,7 @@ class Main extends Component {
         <Route
           exact path="/movies/:id"
           render={({match}) => {
-            console.log(match.params.id)
-            return <SingleMovieScreen movieID={match.params.id}/>
+            return <SingleMovieScreen movieID = {match.params.id}/>
           }}
         />
       </div>
