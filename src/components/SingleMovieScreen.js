@@ -49,7 +49,7 @@ const SingleMovieScreen = ({movieID}) => {
   return(
     <article className="single-movie-view">
       <>
-        {trailerIsShown && <Trailer movieID={movieID} toggleTrailerPopup={toggleTrailerPopup} />, <div></div>}
+        {trailerIsShown && <Trailer movieID={movieID} toggleTrailerPopup={toggleTrailerPopup} />}
         <img className="movie-backdrop" src={movieData?.backdrop_path}></img>
         <div className="cover-poster">
           <img src={movieData?.poster_path} alt={movieData?.title} />

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import '../css/Main.css';
-
-import { endpoints } from '../App';
 import MovieListContainer from './MovieListContainer';
 import SingleMovieScreen from './SingleMovieScreen';
 import {Route} from 'react-router-dom';
