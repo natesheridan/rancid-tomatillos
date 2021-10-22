@@ -15,7 +15,7 @@ describe('Rancid Tomatillos single movie screen flows', () => {
 
   it('Should load a movie cover, background, and details about the movie', () => {
     cy.intercept('GET', `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movie.id}`, {
-      statusCode: 201,
+      statusCode: 200,
       body: {
         id: movie.id/*694919*/,
         title: movie.title /*"Money Plane"*/,
@@ -48,7 +48,7 @@ describe('Rancid Tomatillos single movie screen flows', () => {
 
   it('Should change the url to /movies/movie_id', () => {
     cy.intercept('GET', `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movie.id}`, {
-      statusCode: 201,
+      statusCode: 200,
       body: {
         id: movie.id/*694919*/,
         title: movie.title /*"Money Plane"*/,
@@ -69,7 +69,7 @@ describe('Rancid Tomatillos single movie screen flows', () => {
 
   it('Should return to all of the movies when the back button is clicked', () => {
     cy.intercept('GET', `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movie.id}`, {
-      statusCode: 201,
+      statusCode: 200,
       body: {
         id: movie.id/*694919*/,
         title: movie.title /*"Money Plane"*/,

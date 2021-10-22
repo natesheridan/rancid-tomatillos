@@ -14,7 +14,7 @@ describe('Rancid Tomatillos data load flows', () => {
 
   it('Should load a movie cover and title', () => {
     cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
-      statusCode: 201,
+      statusCode: 200,
       body: {
         id: movie.id/*694919*/,
         poster_path: movie.poster_path /*"https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg"*/,
@@ -28,15 +28,15 @@ describe('Rancid Tomatillos data load flows', () => {
     .get('p').should('contain', 'Money Plane')
   });
 
-  // it('Should show an error if it is unable to load the api data', () => {
-  //   cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
-  //     statusCode: 500,
-  //     body: {
-  //       error: "This is a 500 error. Things might be on fire."
-  //     }
-  //   })
-  //   .get('p').should('contain', 'This is a 500 error. Things might be on fire.')
-  // });
+  it.skip('Should show an error if it is unable to load the api data', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+      statusCode: 500,
+      body: {
+        error: "This is a 500 error. Things might be on fire."
+      }
+    })
+    .get('p').should('contain', 'This is a 500 error. Things might be on fire.')
+  });
 
 
   // it.skip('', () => {
