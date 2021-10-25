@@ -36,7 +36,7 @@ Trailer View (Dark theater mode)
 ![Search Demo](https://s1.gifyu.com/images/demo6532619e9eb5a0ee.gif)
 Live Rendered Searching
 
-![Responsive Styling](https://s1.gifyu.com/images/demo2.gif)
+![Responsive Styling](https://media2.giphy.com/media/E1WSeMpPxG6UAOOzWB/giphy.gif)
 Responsive Styling
 
 ## Installation
