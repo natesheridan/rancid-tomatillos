@@ -22,7 +22,7 @@ const Trailer = ({movieID, toggleTrailerPopup}) => {
             <div className="trailer-window">
                 <button onClick={() => toggleTrailerPopup()}>{faTimesIcon}</button>
                 {videoArray?.videos.length===0 && <h2>No videos have been linked to this video</h2>}
-                <iframe
+                {videoArray?.videos.length>=1 && <iframe
                     className="youtubePlayer"
                     allow="fullscreen"
                     id="player"
@@ -31,7 +31,7 @@ const Trailer = ({movieID, toggleTrailerPopup}) => {
                     src={"https://www.youtube.com/embed/"+ videoArray?.videos[0]?.key}
                     frameBorder="0"
                 >
-                </iframe>
+                </iframe>}
             
             </div>    
         </div>

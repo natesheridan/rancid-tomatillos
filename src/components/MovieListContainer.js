@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 import '../css/MovieListContainer.css';
 import MovieCard from './MovieCard';
+import SearchField from './SearchField';
+
 
 class MovieListContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // movies: this.props.movies,
-      setMovieDetails: this.props.setMovieDetails
+      movies: this.props.movies,
+      isSearching: false,
     }
   }
+
+
   cardElements = () => {
     return this.props.movies.map((movie, i) => {
       return (
@@ -31,6 +35,7 @@ class MovieListContainer extends Component {
 
     return (
       <section className="movie-list-container">
+        <SearchField searchMovies = {this.props.searchMovies}/>
         {this.cardElements()}
       </section>
     )

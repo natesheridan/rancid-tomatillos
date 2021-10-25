@@ -4,14 +4,17 @@ import MovieListContainer from './MovieListContainer';
 import SingleMovieScreen from './SingleMovieScreen';
 import {Route} from 'react-router-dom';
 import api from '../api.js';
+import lS from '../lS';
+
 
 class Main extends Component {
   constructor() {
     super();
     this.state = {
+      allMovies: [],
       movies: [],
+      isSearching: false,
       error: {},
-      selectedMovie: {},
     }
   }
 
@@ -19,19 +22,14 @@ class Main extends Component {
     api.getAllMovies()
     .then(data =>{
       this.setState({ movies : data.movies });
+      this.setState({ allMovies : data.movies });
     })
   }
-
-  MovieData() {
-    api.getAllMovies()
-    .then(data=>console.log(data))
-    .then((movies) => {this.setState({movies})})
+  searchMovies = (str) => {
+    let parsedMovies = this.state.allMovies.filter((m) => m.title.toLowerCase().includes(str.toLowerCase()));
+    this.setState({movies:parsedMovies});
   }
 
-  setMovieDetails = (id) => {
-    const selectedMovie = this.state.movies.find(movie => movie.id === id);
-    this.setState({ selectedMovie: selectedMovie });
-  }
   goBack = () => {
     this.setState({ selectedMovie: {}})
     console.log(this.state.movies, "Movies after go back")
@@ -42,7 +40,7 @@ class Main extends Component {
       <div className="row main">
         {this.state.error?.message && <h2>{this.state.error.message}</h2>}
         <Route exact path={['/', '/home']} render={ () => 
-          <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails}/>
+          <MovieListContainer searchMovies={this.searchMovies} movies={this.state.movies}/>
         }/>
         <Route
           exact path="/:id"      

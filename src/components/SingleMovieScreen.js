@@ -50,11 +50,11 @@ const SingleMovieScreen = ({movieID}) => {
     <article className="single-movie-view">
       <>
         {trailerIsShown && <Trailer movieID={movieID} toggleTrailerPopup={toggleTrailerPopup} />}
-        <img className="movie-backdrop" src={movieData?.backdrop_path}></img>
+        <img alt="backdrop" className="movie-backdrop" src={movieData?.backdrop_path}></img>
         <div className="cover-poster">
           <img src={movieData?.poster_path} alt={movieData?.title} />
         </div>
-        <Link to="/" className="single-movie-btn">
+        <Link to="/" id="smBackBtn"className="single-movie-btn">
           <img alt="alt" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Back_Arrow.svg/1200px-Back_Arrow.svg.png"></img>
         </Link>
         <div className="movie-details">
@@ -68,10 +68,13 @@ const SingleMovieScreen = ({movieID}) => {
           {movieData?.runtime && <section className="md-item">
             <p className="md-descriptor">runtime:</p>
             <p className="md-runtime">{(movieData?.runtime/60).toFixed()} hour and {(movieData?.runtime%60)} minutes</p>
-          </section>}
+          </section>
+          ,
+          <></>
+          }
           <section className="md-item">
             <p className="md-descriptor">rating:</p>
-            <p className="md-average-rating">{faStarIcon} {movieData?.average_rating} / 10</p>
+            <p className="md-average-rating">{faStarIcon} {movieData?.average_rating.toFixed(1)} / 10</p>
           </section>
           <section className="md-item">
             <p className="md-descriptor">overview:</p>
