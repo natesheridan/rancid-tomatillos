@@ -19,8 +19,6 @@ class Navbar extends React.Component{
         return (
             <nav className="navbar">
                 <NavLink to="/"><button className="nav-btn">{faHomeIcon} Home</button></NavLink>
-                <NavLink to="/"><button className="nav-btn">{faFilmIcon} Test</button></NavLink>
-                <NavLink to="/"><button className="nav-btn">{faFilmIcon} Test</button></NavLink>
             </nav>
         )
     }
