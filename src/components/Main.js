@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import '../css/Main.css';
+import ErrorCard from './ErrorCard';
 import MovieListContainer from './MovieListContainer';
 import SingleMovieScreen from './SingleMovieScreen';
 import useFetch from '../useFetch';
@@ -45,24 +46,28 @@ export const endpoints = {
 };
 
 const Main = () => {
-  const { movies, isPending, error } = useFetch(endpoints.movies);
+  const { data: movies, isPending, error } = useFetch(endpoints.movies);
 
   return (
-    <div className="row main">
-      {!error && <ErrorCard errorStatus={error.status} errorMessage={error.status.text} />}
-      {!isPending && <h2>Pending...</h2>}
-      <Route
-        exact path={['/', '/home']}
-        render={ () =>
-          <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails} />
-      }/>
-      <Route
-        exact path="/:id"
-        render={ ({ match }) => {
-          return <SingleMovieScreen movieID={match.params.id} movie={this.selectedMovie} />
-        }}
-      />
-    </div>
+    <>
+      {error && <ErrorCard errorStatus={error} errorMessage={error} />}
+      {isPending && <h2>Loading...</h2>}
+      {movies &&
+        <div className="row main">
+          <Route
+            exact path={['/', '/home']}
+            render={ () =>
+              <MovieListContainer movies={movies} />
+          }/>
+          <Route
+            exact path="/:id"
+            render={ ({ match }) => {
+              return <SingleMovieScreen movieID={match.params.id} />
+            }}
+          />
+        </div>
+      }
+    </>
   )
 }
 
