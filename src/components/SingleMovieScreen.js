@@ -34,7 +34,7 @@ const SingleMovieScreen = ({ movieID }) => {
             <div className="cover-poster">
               <img src={m?.poster_path} alt={m?.title} />
             </div>
-            <Link to="/" classes="single-movie-btn">
+            <Link to="/" className="single-movie-btn">
               <img alt={m?.title} src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Back_Arrow.svg/1200px-Back_Arrow.svg.png" />
             </Link>
             <div className="movie-details">
