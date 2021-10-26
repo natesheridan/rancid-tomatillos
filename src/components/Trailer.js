@@ -1,33 +1,31 @@
-import React from 'react'
-import '../css/Trailer.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import api from '../api'
+import React from 'react';
+import '../css/Trailer.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import useFetch from '../useFetch';
+import { endpoints } from './Main';
+
 const faTimesIcon = <FontAwesomeIcon icon={faTimes} />;
 
-const Trailer = ({movieID, toggleTrailerPopup}) => {
-  const [videoArray, setVideoArray] = React.useState(null);
+const Trailer = ({ movieID, toggleTrailerPopup }) => {
+  console.log('trailer movieID', movieID);
+  const { data: videos, isPending, error } = useFetch(`${endpoints.movies}/${movieID}/videos`);
 
-  React.useEffect(() => {
-    api.getMoviesVideos(movieID)
-      .then(data => {
-        setVideoArray(data)
-        console.log(data)
-      })
-  }, [])
-  
   return(
     <div onClick={() => toggleTrailerPopup()} className="trailer-view-overlay">
       <div className="trailer-window">
         <button onClick={() => toggleTrailerPopup()}>{faTimesIcon}</button>
-        {videoArray?.videos.length===0 && <h2>No videos have been linked to this video</h2>}
+        {error && <h2>  {error}</h2>}
+        {isPending && <h2>Pending...</h2>}
+        {!videos?.videos.length && <h2>No trailers to display.</h2>}
         <iframe
             className="youtubePlayer"
             allow="fullscreen"
             id="player"
             type="text/html"
             width="100%" height="100%"
-            src={"https://www.youtube.com/embed/"+ videoArray?.videos[0]?.key}
+            src={"https://www.youtube.com/embed/"+ videos?.videos[0]?.key}
             frameBorder="0"
         />
       </div>

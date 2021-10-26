@@ -1,59 +1,74 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import '../css/Main.css';
+import ErrorCard from './ErrorCard';
 import MovieListContainer from './MovieListContainer';
 import SingleMovieScreen from './SingleMovieScreen';
-import {Route} from 'react-router-dom';
-import api from '../api.js';
+import useFetch from '../useFetch';
+import { Route } from 'react-router-dom';
 
-class Main extends Component {
-  constructor() {
-    super();
-    this.state = {
-      movies: [],
-      error: {},
-      selectedMovie: {},
-    }
-  }
+export const endpoints = {
+    movies: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies',
+    /*
+      {"movies":
+        [{
+          id: 1,
+          title: "Movie Title",
+          poster_path: "someURL",
+          backdrop_path: "someURL",
+          release_date: "2019-12-04",
+          overview: "Some overview",
+          average_rating: 6 }, ...
+        ]}
+    */
+    movie: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/:movie_id',
+    /*
 
-  componentDidMount = () => {
-    api.getAllMovies()
-    .then(data =>{
-      this.setState({ movies : data.movies });
-    })
-  }
+    */
+    videos: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/:movie_id/videos',
+    /*
+      An array of available videos corresponding to the movie whose id is in the URL;
+      this may be an empty array: [] or
+      [id: 1, movie_id: 1, key:"SUXWAEX2jlg", site: "YouTube", type:"Trailer"]
+    */
+    login: 'https://rancid-tomatillos.herokuapp.com/api/v2/login',
+    /*
+      POST: {email: <String>, password: <String>}
+    */
+    ratings: 'https://rancid-tomatillos.herokuapp.com/api/v2/users/:user_id/ratings',
+    /*
+      GET or
+      POST: { movie_id: <Integer>, rating: <Integer between 1 and 10> }
+    */
+    ratingsId: 'https://rancid-tomatillos.herokuapp.com/api/v2/users/:user_id/ratings/:rating_id'
+    /*
+      DELETE
+    */
+};
 
-  MovieData() {
-    api.getAllMovies()
-    .then(data=>console.log(data))
-    .then((movies) => {this.setState({movies})})
-  }
+const Main = () => {
+  const { data: movies, isPending, error } = useFetch(endpoints.movies);
 
-  setMovieDetails = (id) => {
-    const selectedMovie = this.state.movies.find(movie => movie.id === id);
-    this.setState({ selectedMovie: selectedMovie });
-  }
-
-  goBack = () => {
-    this.setState({ selectedMovie: {}})
-    console.log(this.state.movies, "Movies after go back")
-  }
-
-  render() {
-    return (
-      <div className="row main">
-        {this.state.error?.message && <h2>{this.state.error.message}</h2>}
-        <Route exact path={['/', '/home']} render={ () =>
-          <MovieListContainer movies={this.state.movies} setMovieDetails={this.setMovieDetails} />
-        }/>
-        <Route
-          exact path="/movies/:id"
-          render={({match}) => {
-            return <SingleMovieScreen movieID = {match.params.id}/>
-          }}
-        />
-      </div>
-    )
-  }
+  return (
+    <>
+      {error && <ErrorCard errorStatus={error} errorMessage={error} />}
+      {isPending && <h2>Loading...</h2>}
+      {movies &&
+        <div className="row main">
+          <Route
+            exact path={['/', '/home']}
+            render={ () =>
+              <MovieListContainer movies={movies} />
+          }/>
+          <Route
+            exact path="/:id"
+            render={ ({ match }) => {
+              return <SingleMovieScreen movieID={match.params.id} />
+            }}
+          />
+        </div>
+      }
+    </>
+  )
 }
 
 export default Main;
