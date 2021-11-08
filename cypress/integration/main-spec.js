@@ -1,12 +1,7 @@
 import movieData from '../fixtures/movieData.json';
 
 describe('Rancid Tomatillos data load flows', () => {
-  let movie;
-
-  beforeEach(() => {
-    movie = movieData[0];
-    cy.visit('http://localhost:3000')
-  });
+  let movie = movieData[0];
 
   it('Should confirm that test data is imported correctly', () => {
     cy.fixture('movieData.json').as('movieData');
@@ -21,7 +16,7 @@ describe('Rancid Tomatillos data load flows', () => {
       .get('p').should('contain', 'Money Plane')
   });
 
-  it.skip('Should show an error if it is unable to load the api data', () => {
+  it('Should show an error if it is unable to load the api data', () => {
     cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
       statusCode: 500,
       body: {
