@@ -1,13 +1,8 @@
-import React, { Component, useEffect } from 'react';
+import React from 'react';
 import '../css/MovieListContainer.css';
 import MovieCard from './MovieCard';
-import SearchField from './SearchField';
 
-
-const MovieListContainer = ( { movies } ) => {
-
-
-
+const MovieListContainer = ({ movies }) => {
   return (
     <>
       <section className="movie-list-container">

@@ -3,9 +3,9 @@ import '../css/Header.css';
 import Navbar from './Navbar';
 
 class Header extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
 
   render(){

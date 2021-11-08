@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/SingleMovieScreen.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,7 +17,6 @@ const SingleMovieScreen = ({ movieID }) => {
   const m = movie?.movie;
 
   const toggleTrailerPopup = () => {
-    console.log('trailerIsShown', trailerIsShown)
     return trailerIsShown ? setTrailerIsShown(false) : setTrailerIsShown(true);
   }
 

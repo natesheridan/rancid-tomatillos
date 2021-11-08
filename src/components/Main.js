@@ -1,4 +1,4 @@
-import React, { setState, useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import '../css/Main.css';
 import ErrorCard from './ErrorCard';
 import MovieListContainer from './MovieListContainer';
@@ -6,7 +6,6 @@ import SingleMovieScreen from './SingleMovieScreen';
 import useFetch from '../useFetch';
 import { Route } from 'react-router-dom';
 import SearchField from './SearchField';
-
 
 export const endpoints = {
     movies: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies',
@@ -50,14 +49,9 @@ export const endpoints = {
 const Main = () => {
   const { data: movies, isPending, error } = useFetch(endpoints.movies);
 
+  const [filteredMovies, setFilteredMovies] = useState({movies: movies});
+  const [isSearching, setIsSearching] = useState(false);
 
-
-
-
-  const [filteredMovies, setFilteredMovies] = React.useState({movies: movies})
-  const [isSearching, setIsSearching] = React.useState(false)
-
-  
   const handleChange = (event) => {
     if(event.target.value===""){
       setIsSearching(false);
@@ -68,16 +62,14 @@ const Main = () => {
     setFilteredMovies(searchMovies(event.target.value))
   }
 
-  
   const searchMovies = (str) => {
-    let viableMovies = movies?.movies?.filter(movie => movie.title.toLowerCase().includes(str.toLowerCase()))
-    return {movies: viableMovies}
+    let viableMovies = movies?.movies?.filter(movie => movie.title.toLowerCase().includes(str.toLowerCase()));
+    return {movies: viableMovies};
   }
-  
-  
+
   useEffect(()=> {
-    setFilteredMovies(movies)
-  }, [])
+    setFilteredMovies(movies);
+  }, [movies])
 
   return (
     <>

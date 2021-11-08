@@ -2,14 +2,12 @@ import React from 'react';
 import '../css/Trailer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
 import useFetch from '../useFetch';
 import { endpoints } from './Main';
 
 const faTimesIcon = <FontAwesomeIcon icon={faTimes} />;
 
 const Trailer = ({ movieID, toggleTrailerPopup }) => {
-  console.log('trailer movieID', movieID);
   const { data: videos, isPending, error } = useFetch(`${endpoints.movies}/${movieID}/videos`);
 
   return(
@@ -20,13 +18,14 @@ const Trailer = ({ movieID, toggleTrailerPopup }) => {
         {isPending && <h2>Pending...</h2>}
         {!videos?.videos.length && <h2>No trailers to display.</h2>}
         <iframe
-            className="youtubePlayer"
-            allow="fullscreen"
-            id="player"
-            type="text/html"
-            width="100%" height="100%"
-            src={"https://www.youtube.com/embed/"+ videos?.videos[0]?.key}
-            frameBorder="0"
+          title="Movie Trailer"
+          className="youtubePlayer"
+          allow="fullscreen"
+          id="player"
+          type="text/html"
+          width="100%" height="100%"
+          src={"https://www.youtube.com/embed/"+ videos?.videos[0]?.key}
+          frameBorder="0"
         />
       </div>
     </div>
