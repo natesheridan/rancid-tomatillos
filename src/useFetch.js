@@ -20,7 +20,7 @@ const useFetch = (endpoint) => {
       })
       .catch(error => {
         setIsPending(false);
-        //setError(error);
+        setError(error.message);
       })
   }, [endpoint]);
 
