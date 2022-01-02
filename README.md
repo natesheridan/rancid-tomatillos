@@ -2,7 +2,7 @@
 
 # Rancid Tomatillos 🍅
 ![Single Movie View](https://user-images.githubusercontent.com/83609521/138765670-7999359c-4cbe-4fe6-9b66-14a22251006f.png)
-
+https://nsrt.surge.sh/
 
 Rancid Tomatillos is a web application that utilizes the 'create-react-app' package. Using this package created our first react app - Rancid Tomatillos. Rancid Tomatillos - not to be confused with Rotten Tomotoes - focuses on being able to show the user a database of movies in a persentable way and allow interaction such as saving, reviewing, and watching trailers of said movies. Although not all features are implemented just yet - our app still provides a great way to parse through a database of movies and view information about the movies. 
 
